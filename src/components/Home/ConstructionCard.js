@@ -1,14 +1,337 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { memo, useCallback } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const ConstructionCard = () => {
+import {
+  responsiveFontSize,
+  responsiveWidth,
+  responsiveHeight,
+} from 'react-native-responsive-dimensions';
+
+const CONSTRUCTION_DATA = [
+  {
+    id: '1',
+    title: 'Residential',
+    subtitle: 'Build your Home',
+    image: require('../../../assets/construction/residential.png'),
+    theme: 'blue',
+  },
+  {
+    id: '2',
+    title: 'Commercial',
+    subtitle: 'Build your Home',
+    image: require('../../../assets/construction/commercial.png'),
+    theme: 'orange',
+  },
+  {
+    id: '3',
+    title: 'Land Development',
+    subtitle: 'Build your Home',
+    image: require('../../../assets/construction/land-development.png'),
+    theme: 'orange',
+  },
+  {
+    id: '4',
+    title: 'Industries',
+    subtitle: 'Build your Home',
+    image: require('../../../assets/construction/industries.png'),
+    theme: 'blue',
+  },
+];
+
+const ConstructionCard = memo(({ onPressItem }) => {
+  const handlePress = useCallback(
+    item => {
+      onPressItem?.(item);
+    },
+    [onPressItem],
+  );
+
   return (
-    <View>
-      <Text>ConstructionCard</Text>
+    <View style={styles.container}>
+      <Text style={styles.sectionTitle}>Construction</Text>
+      <View style={styles.grid}>
+        {CONSTRUCTION_DATA.map(item => {
+          const isBlue = item.theme === 'blue';
+          return (
+            <TouchableOpacity
+              key={item.id}
+              activeOpacity={0.8}
+              onPress={() => handlePress(item)}
+              style={[
+                styles.card,
+                {
+                  borderColor: isBlue ? '#D8EEFF' : '#F9E1D0',
+
+                  backgroundColor: isBlue ? '#F9FCFF' : '#FFFDFC',
+                },
+              ]}
+            >
+              <View style={styles.content}>
+                <Text style={styles.title} numberOfLines={1}>
+                  {item.title}
+                </Text>
+
+                {/* Subtitle */}
+                <Text style={styles.subtitle} numberOfLines={1}>
+                  {item.subtitle}
+                </Text>
+
+                {/* Explore */}
+                <View style={styles.exploreContainer}>
+                  <Text
+                    style={[
+                      styles.exploreText,
+                      {
+                        color: isBlue ? '#2780B9' : '#FF8A2A',
+                      },
+                    ]}
+                  >
+                    Explore
+                  </Text>
+
+                  <View
+                    style={[
+                      styles.arrowCircle,
+                      {
+                        backgroundColor: isBlue ? '#2780B9' : '#FF8A2A',
+                      },
+                    ]}
+                  >
+                    <Text style={styles.arrow}>→</Text>
+                  </View>
+                </View>
+              </View>
+
+              {/* =================================
+                  DECORATIVE IMAGE BACKGROUND
+              ================================= */}
+
+              <View
+                style={[
+                  styles.imageBackground,
+                  {
+                    backgroundColor: isBlue ? '#EAF6FF' : '#FFF0E3',
+                  },
+                ]}
+              />
+
+              {/* =================================
+                  IMAGE
+              ================================= */}
+
+              <Image
+                source={item.image}
+                resizeMode="contain"
+                style={styles.constructionImage}
+              />
+            </TouchableOpacity>
+          );
+        })}
+      </View>
     </View>
-  )
-}
+  );
+});
 
-export default ConstructionCard
+export default ConstructionCard;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  // ==========================================
+  // MAIN CONTAINER
+  // ==========================================
+
+  container: {
+    width: '100%',
+
+    marginTop: responsiveHeight(2.2),
+
+    paddingHorizontal: responsiveWidth(5),
+  },
+
+  // ==========================================
+  // SECTION TITLE
+  // ==========================================
+
+  sectionTitle: {
+    fontSize: responsiveFontSize(2.8),
+
+    lineHeight: responsiveHeight(3.6),
+
+    fontWeight: '700',
+
+    color: '#111111',
+
+    marginBottom: responsiveHeight(2),
+  },
+
+  // ==========================================
+  // GRID
+  // ==========================================
+
+  grid: {
+    width: '100%',
+
+    flexDirection: 'row',
+
+    flexWrap: 'wrap',
+
+    justifyContent: 'space-between',
+
+    rowGap: responsiveHeight(1.8),
+  },
+
+  // ==========================================
+  // CARD
+  // ==========================================
+
+  card: {
+    width: responsiveWidth(43.5),
+
+    height: responsiveHeight(15.5),
+
+    borderWidth: responsiveWidth(0.25),
+
+    borderRadius: responsiveWidth(3.5),
+
+    overflow: 'hidden',
+
+    position: 'relative',
+
+    paddingLeft: responsiveWidth(4),
+
+    paddingTop: responsiveHeight(2.2),
+  },
+
+  // ==========================================
+  // CONTENT
+  // ==========================================
+
+  content: {
+    zIndex: 3,
+  },
+
+  // ==========================================
+  // TITLE
+  // ==========================================
+
+  title: {
+    maxWidth: responsiveWidth(30),
+
+    fontSize: responsiveFontSize(2.35),
+
+    lineHeight: responsiveHeight(3),
+
+    fontWeight: '400',
+
+    color: '#222222',
+  },
+
+  // ==========================================
+  // SUBTITLE
+  // ==========================================
+
+  subtitle: {
+    marginTop: responsiveHeight(0.2),
+
+    fontSize: responsiveFontSize(1.7),
+
+    lineHeight: responsiveHeight(2.3),
+
+    fontWeight: '400',
+
+    color: '#898989',
+  },
+
+  // ==========================================
+  // EXPLORE
+  // ==========================================
+
+  exploreContainer: {
+    flexDirection: 'row',
+
+    alignItems: 'center',
+
+    marginTop: responsiveHeight(1.7),
+  },
+
+  exploreText: {
+    fontSize: responsiveFontSize(2),
+
+    lineHeight: responsiveHeight(2.6),
+
+    fontWeight: '600',
+  },
+
+  // ==========================================
+  // ARROW CIRCLE
+  // ==========================================
+
+  arrowCircle: {
+    width: responsiveWidth(4.8),
+
+    height: responsiveWidth(4.8),
+
+    borderRadius: responsiveWidth(2.4),
+
+    marginLeft: responsiveWidth(1.5),
+
+    alignItems: 'center',
+
+    justifyContent: 'center',
+  },
+
+  arrow: {
+    color: '#FFFFFF',
+
+    fontSize: responsiveFontSize(1.7),
+
+    lineHeight: responsiveFontSize(2),
+
+    fontWeight: '700',
+
+    includeFontPadding: false,
+  },
+
+  // ==========================================
+  // IMAGE BACKGROUND
+  // ==========================================
+
+  imageBackground: {
+    position: 'absolute',
+
+    width: responsiveWidth(20),
+
+    height: responsiveWidth(17),
+
+    right: responsiveWidth(2),
+
+    bottom: responsiveHeight(-0.5),
+
+    borderRadius: responsiveWidth(10),
+
+    opacity: 0.9,
+
+    transform: [
+      {
+        rotate: '-8deg',
+      },
+    ],
+  },
+
+  // ==========================================
+  // CONSTRUCTION IMAGE
+  // ==========================================
+
+  constructionImage: {
+    position: 'absolute',
+
+    width: responsiveWidth(21),
+
+    height: responsiveHeight(9),
+
+    right: responsiveWidth(2.2),
+
+    bottom: responsiveHeight(0.5),
+
+    zIndex: 2,
+  },
+});

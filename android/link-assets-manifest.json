@@ -1,0 +1,25 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Satoshi-Bold.ttf",
+      "sha1": "61213e7f40ade8600afbc58b58dca80f3dd1d31c"
+    },
+    {
+      "path": "assets/fonts/Satoshi-Italic.ttf",
+      "sha1": "ea7cb57ec67318d45d63112181574bfeb96c1df4"
+    },
+    {
+      "path": "assets/fonts/Satoshi-Light.ttf",
+      "sha1": "61748113ea5ab78e8cbb38effa018e4f47e92833"
+    },
+    {
+      "path": "assets/fonts/Satoshi-Medium.ttf",
+      "sha1": "7d0c8089376e375f6fc4d3676941b151586dca3e"
+    },
+    {
+      "path": "assets/fonts/Satoshi-Regular.ttf",
+      "sha1": "b9ace0177d614e65e7bf166df4d1619fe85b17d1"
+    }
+  ]
+}
