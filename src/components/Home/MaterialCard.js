@@ -8,6 +8,12 @@ import {
   View,
 } from 'react-native';
 
+import {
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from 'react-native-responsive-dimensions';
+
 const MATERIAL_DATA = [
   {
     id: '1',
@@ -78,7 +84,6 @@ const MaterialCard = memo(({ onViewAll, onPressItem }) => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Material Suppliers</Text>
 
@@ -87,7 +92,6 @@ const MaterialCard = memo(({ onViewAll, onPressItem }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Horizontal Materials */}
       <FlatList
         data={MATERIAL_DATA}
         horizontal
@@ -123,13 +127,13 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 18,
+    fontSize: responsiveFontSize(2.2),
     fontWeight: '500',
     color: '#111111',
   },
 
   viewAll: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(1.8),
     fontWeight: '500',
     color: '#FF8A00',
   },
@@ -174,10 +178,10 @@ const styles = StyleSheet.create({
     width: '100%',
     textAlign: 'center',
     textAlignVertical: 'center',
-    fontSize: 16,
-    lineHeight: 20,
-    fontWeight: '400',
+    fontSize: responsiveFontSize(1.6),
+    lineHeight: responsiveFontSize(2),
+    fontWeight: '500',
     color: '#111111',
-    marginTop: 4,
+    marginTop: responsiveHeight(0.5),
   },
 });

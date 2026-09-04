@@ -40,7 +40,7 @@ const PIECE_WORKS_DATA = [
   },
 ];
 
-const ITEM_WIDTH = 82;
+const ITEM_WIDTH = 89;
 const ITEM_GAP = 13;
 
 const PieceWorksCard = memo(({ onViewAll, onPressItem }) => {
@@ -78,7 +78,6 @@ const PieceWorksCard = memo(({ onViewAll, onPressItem }) => {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Piece Works</Text>
 
@@ -87,7 +86,6 @@ const PieceWorksCard = memo(({ onViewAll, onPressItem }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Categories */}
       <FlatList
         data={PIECE_WORKS_DATA}
         horizontal
@@ -124,13 +122,14 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 17,
+    fontSize: responsiveFontSize(2.4),
     fontWeight: '500',
     color: '#111111',
+    fontFamily: 'Satoshi-Bold',
   },
 
   viewAll: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.8),
     fontWeight: '500',
     color: '#FF8A00',
   },
@@ -142,15 +141,16 @@ const styles = StyleSheet.create({
   item: {
     width: ITEM_WIDTH,
     alignItems: 'center',
+    // backgroundColor: '#FFFFFF',
   },
 
   iconContainer: {
-    width: responsiveHeight(8),
-    height: responsiveHeight(8),
-    borderRadius: responsiveHeight(4),
+    width: responsiveHeight(9),
+    height: responsiveHeight(9),
+    borderRadius: responsiveHeight(4.5),
     borderWidth: 0.5,
     borderColor: '#A3A3A3',
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#f2f2f2',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     width: ITEM_WIDTH,
     marginTop: 7,
     textAlign: 'center',
-    fontSize: 14,
+    fontSize: responsiveFontSize(1.6),
     fontWeight: '400',
     color: '#111111',
   },

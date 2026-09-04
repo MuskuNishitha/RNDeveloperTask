@@ -1,1 +1,1 @@
-export const GOOGLE_MAP_KEY = "AIzaSyDfjw4P4PnfI08-B-ljZDhEeQxnBqNv3hQ";   // this one we need to keep because in android .xml it is using
+export const GOOGLE_MAP_KEY = "AIzaSyDfjw4P4PnfI08-B-ljZDhEeQxnBqNv3hQ";

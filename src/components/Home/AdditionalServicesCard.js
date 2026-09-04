@@ -7,12 +7,17 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from 'react-native-responsive-dimensions';
 
 const ADDITIONAL_SERVICES_DATA = [
   {
     id: '1',
     name: 'PMC Services',
-    image: require('../../../assets/additionalServices/pmc.png'),
+    image: require('../../../assets/additionalServices/safety.png'),
   },
   {
     id: '2',
@@ -22,7 +27,7 @@ const ADDITIONAL_SERVICES_DATA = [
   {
     id: '3',
     name: 'Safety Services',
-    image: require('../../../assets/additionalServices/safety.png'),
+    image: require('../../../assets/additionalServices/pmc.png'),
   },
   {
     id: '4',
@@ -31,8 +36,8 @@ const ADDITIONAL_SERVICES_DATA = [
   },
 ];
 
-const CARD_WIDTH = 154;
-const CARD_HEIGHT = 128;
+const CARD_WIDTH = responsiveWidth(41);
+const CARD_HEIGHT = responsiveHeight(17);
 const CARD_GAP = 10;
 
 const AdditionalServicesCard = memo(
@@ -44,14 +49,12 @@ const AdditionalServicesCard = memo(
           style={styles.card}
           onPress={() => onPressItem?.(item)}>
           
-          {/* Background Image */}
           <Image
             source={item.image}
             resizeMode="cover"
             style={styles.backgroundImage}
           />
 
-          {/* Bottom Overlay */}
           <View style={styles.overlayContainer}>
             <Text
               style={styles.serviceName}
@@ -85,7 +88,6 @@ const AdditionalServicesCard = memo(
 
     return (
       <View style={styles.container}>
-        {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>
             Additional Services
@@ -100,7 +102,6 @@ const AdditionalServicesCard = memo(
           </TouchableOpacity>
         </View>
 
-        {/* Services */}
         <FlatList
           data={ADDITIONAL_SERVICES_DATA}
           horizontal
@@ -138,13 +139,13 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 17,
+    fontSize: responsiveFontSize(2.2),
     fontWeight: '500',
     color: '#111111',
   },
 
   viewAll: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.8),
     fontWeight: '500',
     color: '#FF8A00',
   },
@@ -172,12 +173,10 @@ const styles = StyleSheet.create({
 
   overlayContainer: {
     position: 'absolute',
-
     left: 12,
     right: 12,
     bottom: 10,
-
-    height: 35,
+    height: responsiveHeight(3),
 
     borderRadius: 20,
 

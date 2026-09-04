@@ -8,6 +8,12 @@ import {
   View,
 } from 'react-native';
 
+import {
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from 'react-native-responsive-dimensions';
+
 const MACHINERY_DATA = [
   {
     id: '1',
@@ -42,9 +48,6 @@ const CARD_HEIGHT = 82;
 const CARD_GAP = 14;
 
 const MachineryCard = memo(({onViewAll, onPressItem}) => {
-  /**
-   * Machinery item
-   */
   const renderItem = useCallback(
     ({item}) => {
       return (
@@ -53,7 +56,6 @@ const MachineryCard = memo(({onViewAll, onPressItem}) => {
           style={styles.item}
           onPress={() => onPressItem?.(item)}>
           
-          {/* Image */}
           <View style={styles.imageContainer}>
             <Image
               source={item.image}
@@ -62,7 +64,6 @@ const MachineryCard = memo(({onViewAll, onPressItem}) => {
             />
           </View>
 
-          {/* Machinery Name */}
           <Text
             style={styles.machineName}
             numberOfLines={1}>
@@ -74,14 +75,8 @@ const MachineryCard = memo(({onViewAll, onPressItem}) => {
     [onPressItem],
   );
 
-  /**
-   * Key extractor
-   */
   const keyExtractor = useCallback(item => item.id, []);
 
-  /**
-   * Optimized FlatList layout
-   */
   const getItemLayout = useCallback(
     (_, index) => ({
       length: CARD_WIDTH + CARD_GAP,
@@ -91,9 +86,6 @@ const MachineryCard = memo(({onViewAll, onPressItem}) => {
     [],
   );
 
-  /**
-   * Separator
-   */
   const ItemSeparator = useCallback(
     () => <View style={styles.separator} />,
     [],
@@ -102,7 +94,6 @@ const MachineryCard = memo(({onViewAll, onPressItem}) => {
   return (
     <View style={styles.container}>
       
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>
           Hire Machineries
@@ -117,7 +108,6 @@ const MachineryCard = memo(({onViewAll, onPressItem}) => {
         </TouchableOpacity>
       </View>
 
-      {/* Machinery Horizontal List */}
       <FlatList
         data={MACHINERY_DATA}
         renderItem={renderItem}
@@ -132,16 +122,13 @@ const MachineryCard = memo(({onViewAll, onPressItem}) => {
 
         getItemLayout={getItemLayout}
 
-        // Performance
         initialNumToRender={4}
         maxToRenderPerBatch={4}
         windowSize={3}
         removeClippedSubviews
 
-        // Nested inside Home FlatList
         nestedScrollEnabled
 
-        // Avoid unnecessary bounce
         bounces={false}
       />
     </View>
@@ -156,10 +143,6 @@ const styles = StyleSheet.create({
     marginTop: 18,
   },
 
-  // ─────────────────────────────
-  // Header
-  // ─────────────────────────────
-
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -171,20 +154,16 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 17,
+    fontSize: responsiveFontSize(2.2),
     fontWeight: '500',
     color: '#111111',
   },
 
   viewAll: {
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.8),
     fontWeight: '500',
     color: '#FF8A00',
   },
-
-  // ─────────────────────────────
-  // FlatList
-  // ─────────────────────────────
 
   listContent: {
     paddingLeft: 28,
@@ -195,18 +174,11 @@ const styles = StyleSheet.create({
     width: CARD_GAP,
   },
 
-  // ─────────────────────────────
-  // Item
-  // ─────────────────────────────
-
   item: {
     width: CARD_WIDTH,
     alignItems: 'center',
+    backgroundColor: '#FAFAFA',
   },
-
-  // ─────────────────────────────
-  // Image Box
-  // ─────────────────────────────
 
   imageContainer: {
     width: CARD_WIDTH,
@@ -214,9 +186,7 @@ const styles = StyleSheet.create({
 
     borderWidth: 1,
     borderColor: '#E5E5E5',
-
     borderRadius: 10,
-
     backgroundColor: '#FAFAFA',
 
     alignItems: 'center',
@@ -226,23 +196,19 @@ const styles = StyleSheet.create({
   },
 
   machineImage: {
-    width: 82,
-    height: 70,
+    width: responsiveWidth(14),
+    height: responsiveHeight(8),
   },
-
-  // ─────────────────────────────
-  // Name
-  // ─────────────────────────────
 
   machineName: {
     width: CARD_WIDTH,
 
-    marginTop: 7,
+    marginTop: responsiveHeight(0.5),
 
     textAlign: 'center',
 
-    fontSize: 14,
-    fontWeight: '400',
+    fontSize: responsiveFontSize(1.5),
+    fontWeight: '500',
 
     color: '#111111',
 

@@ -71,12 +71,10 @@ const ConstructionCard = memo(({ onPressItem }) => {
                   {item.title}
                 </Text>
 
-                {/* Subtitle */}
                 <Text style={styles.subtitle} numberOfLines={1}>
                   {item.subtitle}
                 </Text>
 
-                {/* Explore */}
                 <View style={styles.exploreContainer}>
                   <Text
                     style={[
@@ -102,10 +100,6 @@ const ConstructionCard = memo(({ onPressItem }) => {
                 </View>
               </View>
 
-              {/* =================================
-                  DECORATIVE IMAGE BACKGROUND
-              ================================= */}
-
               <View
                 style={[
                   styles.imageBackground,
@@ -114,10 +108,6 @@ const ConstructionCard = memo(({ onPressItem }) => {
                   },
                 ]}
               />
-
-              {/* =================================
-                  IMAGE
-              ================================= */}
 
               <Image
                 source={item.image}
@@ -135,10 +125,6 @@ const ConstructionCard = memo(({ onPressItem }) => {
 export default ConstructionCard;
 
 const styles = StyleSheet.create({
-  // ==========================================
-  // MAIN CONTAINER
-  // ==========================================
-
   container: {
     width: '100%',
 
@@ -146,10 +132,6 @@ const styles = StyleSheet.create({
 
     paddingHorizontal: responsiveWidth(5),
   },
-
-  // ==========================================
-  // SECTION TITLE
-  // ==========================================
 
   sectionTitle: {
     fontSize: responsiveFontSize(2.8),
@@ -163,31 +145,17 @@ const styles = StyleSheet.create({
     marginBottom: responsiveHeight(2),
   },
 
-  // ==========================================
-  // GRID
-  // ==========================================
-
   grid: {
     width: '100%',
-
     flexDirection: 'row',
-
     flexWrap: 'wrap',
-
     justifyContent: 'space-between',
-
-    rowGap: responsiveHeight(1.8),
+    rowGap: responsiveHeight(1.4),
   },
 
-  // ==========================================
-  // CARD
-  // ==========================================
-
   card: {
-    width: responsiveWidth(43.5),
-
-    height: responsiveHeight(15.5),
-
+    width: responsiveWidth(44.5),
+    height: responsiveHeight(14),
     borderWidth: responsiveWidth(0.25),
 
     borderRadius: responsiveWidth(3.5),
@@ -195,39 +163,22 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
 
     position: 'relative',
-
-    paddingLeft: responsiveWidth(4),
-
-    paddingTop: responsiveHeight(2.2),
+    paddingLeft: responsiveWidth(1.4),
+    paddingTop: responsiveHeight(1.5),
   },
-
-  // ==========================================
-  // CONTENT
-  // ==========================================
 
   content: {
     zIndex: 3,
   },
 
-  // ==========================================
-  // TITLE
-  // ==========================================
-
   title: {
     maxWidth: responsiveWidth(30),
-
-    fontSize: responsiveFontSize(2.35),
-
-    lineHeight: responsiveHeight(3),
-
-    fontWeight: '400',
+    fontSize: responsiveFontSize(2.3),
+    lineHeight: responsiveHeight(2),
+    fontWeight: '500',
 
     color: '#222222',
   },
-
-  // ==========================================
-  // SUBTITLE
-  // ==========================================
 
   subtitle: {
     marginTop: responsiveHeight(0.2),
@@ -240,10 +191,6 @@ const styles = StyleSheet.create({
 
     color: '#898989',
   },
-
-  // ==========================================
-  // EXPLORE
-  // ==========================================
 
   exploreContainer: {
     flexDirection: 'row',
@@ -260,10 +207,6 @@ const styles = StyleSheet.create({
 
     fontWeight: '600',
   },
-
-  // ==========================================
-  // ARROW CIRCLE
-  // ==========================================
 
   arrowCircle: {
     width: responsiveWidth(4.8),
@@ -291,10 +234,6 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
   },
 
-  // ==========================================
-  // IMAGE BACKGROUND
-  // ==========================================
-
   imageBackground: {
     position: 'absolute',
 
@@ -317,21 +256,12 @@ const styles = StyleSheet.create({
     ],
   },
 
-  // ==========================================
-  // CONSTRUCTION IMAGE
-  // ==========================================
-
   constructionImage: {
     position: 'absolute',
-
-    width: responsiveWidth(21),
-
-    height: responsiveHeight(9),
-
-    right: responsiveWidth(2.2),
-
+    width: responsiveWidth(14),
+    height: responsiveHeight(6.8),
+    right: responsiveWidth(0.2),
     bottom: responsiveHeight(0.5),
-
     zIndex: 2,
   },
 });

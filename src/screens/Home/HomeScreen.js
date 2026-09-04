@@ -10,17 +10,20 @@ import MachineryCard from '../../components/Home/MachineryCard';
 import PieceWorksCard from '../../components/Home/PieceWorksCard';
 import AdditionalServicesCard from '../../components/Home/AdditionalServicesCard';
 import ConstructionCard from '../../components/Home/ConstructionCard';
+import NriPropertyCare from '../../components/Home/NriPropertyCare';
+import BecomeVendor from '../../components/Home/BecomeVendor';
+import Testimonials from '../../components/Home/Testimonials';
 
 import { DEFAULT_LOCATION } from '../../config/DefaultLocation';
 
 const HOME_SECTIONS = [
   {
-    id: 'materials',
-    type: 'materials',
+    id: 'construction',
+    type: 'construction',
   },
   {
-    id: 'machineries',
-    type: 'machineries',
+    id: 'NriPropertyCare',
+    type: 'NriPropertyCare',
   },
   {
     id: 'piece-works',
@@ -31,8 +34,20 @@ const HOME_SECTIONS = [
     type: 'additional-services',
   },
   {
-    id: 'construction',
-    type: 'construction',
+    id: 'Testimonials',
+    type: 'Testimonials',
+  },
+  {
+    id: 'BecomeVendor',
+    type: 'BecomeVendor',
+  },
+  {
+    id: 'machineries',
+    type: 'machineries',
+  },
+  {
+    id: 'materials',
+    type: 'materials',
   },
 ];
 
@@ -50,6 +65,23 @@ const HomeScreen = ({ navigation, route }) => {
   const renderSection = useCallback(
     ({ item }) => {
       switch (item.type) {
+        case 'construction':
+          return (
+            <ConstructionCard
+              onPressItem={item => {
+                console.log('Construction:', item);
+              }}
+            />
+          );
+
+        case 'NriPropertyCare':
+          return (
+            <NriPropertyCare
+              onKnowMore={() => {
+                console.log('Know more pressed');
+              }}
+            />
+          );
         case 'materials':
           return (
             <MaterialCard
@@ -90,11 +122,19 @@ const HomeScreen = ({ navigation, route }) => {
               }}
             />
           );
-        case 'construction':
+        case 'BecomeVendor':
           return (
-            <ConstructionCard
-              onPressItem={item => {
-                console.log('Construction:', item);
+            <BecomeVendor
+              onRegister={() => {
+                console.log('Register pressed');
+              }}
+            />
+          );
+        case 'Testimonials':
+          return (
+            <Testimonials
+              onReadMore={() => {
+                console.log('Read more pressed');
               }}
             />
           );
@@ -109,10 +149,8 @@ const HomeScreen = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
       <HomeHeader location={location} />
 
-      {/* Home Content */}
       <FlatList
         data={HOME_SECTIONS}
         keyExtractor={keyExtractor}
@@ -120,16 +158,13 @@ const HomeScreen = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}
         nestedScrollEnabled
-        // Performance
         initialNumToRender={3}
         maxToRenderPerBatch={3}
         windowSize={5}
         removeClippedSubviews
-        // Avoid extra blank space
         bounces={false}
       />
 
-      {/* Bottom Navigation */}
       <BottomTab
         activeTab={route?.name || 'Home'}
         onTabPress={tab => navigation.navigate(tab)}
