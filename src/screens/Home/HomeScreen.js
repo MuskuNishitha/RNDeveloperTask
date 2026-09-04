@@ -1,7 +1,11 @@
-import React, { useCallback } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import React, {useCallback, useState} from 'react';
+import {
+  FlatList,
+  StatusBar,
+  StyleSheet,
+} from 'react-native';
 
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import BottomTab from '../../components/Home/BottomTab';
 import HomeHeader from '../../components/Home/HomeHeader';
@@ -14,7 +18,7 @@ import NriPropertyCare from '../../components/Home/NriPropertyCare';
 import BecomeVendor from '../../components/Home/BecomeVendor';
 import Testimonials from '../../components/Home/Testimonials';
 
-import { DEFAULT_LOCATION } from '../../config/DefaultLocation';
+import {DEFAULT_LOCATION} from '../../config/DefaultLocation';
 
 const HOME_SECTIONS = [
   {
@@ -51,8 +55,22 @@ const HOME_SECTIONS = [
   },
 ];
 
-const HomeScreen = ({ navigation, route }) => {
-  const location = route?.params?.location || DEFAULT_LOCATION;
+const HomeScreen = ({navigation, route}) => {
+  // ==================================================
+  // ALL HOOKS MUST BE AT THE TOP
+  // ==================================================
+
+  const [headerGradient, setHeaderGradient] = useState([
+    '#1B9CD9',
+    '#7FCBEA',
+  ]);
+
+  const location =
+    route?.params?.location || DEFAULT_LOCATION;
+
+  const handleBannerChange = useCallback(background => {
+    setHeaderGradient(background);
+  }, []);
 
   const handleMaterialPress = useCallback(item => {
     console.log('Selected material:', item);
@@ -62,26 +80,103 @@ const HomeScreen = ({ navigation, route }) => {
     console.log('View all materials');
   }, []);
 
+  const handleConstructionPress = useCallback(item => {
+    console.log('Construction:', item);
+  }, []);
+
+  const handleNriKnowMore = useCallback(() => {
+    console.log('Know more pressed');
+  }, []);
+
+  const handleMachineryPress = useCallback(item => {
+    console.log('Selected machinery:', item);
+  }, []);
+
+  const handlePieceWorkPress = useCallback(item => {
+    console.log('Selected piece work:', item);
+  }, []);
+
+  const handleAdditionalServicePress = useCallback(item => {
+    console.log('Selected additional service:', item);
+  }, []);
+
+  const handleRegister = useCallback(() => {
+    console.log('Register pressed');
+  }, []);
+
+  const handleReadMore = useCallback(() => {
+    console.log('Read more pressed');
+  }, []);
+
+  const handleMachineryViewAll = useCallback(() => {
+    navigation.navigate('Machineries');
+  }, [navigation]);
+
+  const handlePieceWorksViewAll = useCallback(() => {
+    navigation.navigate('PieceWorks');
+  }, [navigation]);
+
+  const handleAdditionalServicesViewAll = useCallback(() => {
+    navigation.navigate('AdditionalServices');
+  }, [navigation]);
+
+  const keyExtractor = useCallback(item => item.id, []);
+
   const renderSection = useCallback(
-    ({ item }) => {
+    ({item}) => {
       switch (item.type) {
         case 'construction':
           return (
             <ConstructionCard
-              onPressItem={item => {
-                console.log('Construction:', item);
-              }}
+              onPressItem={handleConstructionPress}
             />
           );
 
         case 'NriPropertyCare':
           return (
             <NriPropertyCare
-              onKnowMore={() => {
-                console.log('Know more pressed');
-              }}
+              onKnowMore={handleNriKnowMore}
             />
           );
+
+        case 'piece-works':
+          return (
+            <PieceWorksCard
+              onViewAll={handlePieceWorksViewAll}
+              onPressItem={handlePieceWorkPress}
+            />
+          );
+
+        case 'additional-services':
+          return (
+            <AdditionalServicesCard
+              onViewAll={handleAdditionalServicesViewAll}
+              onPressItem={handleAdditionalServicePress}
+            />
+          );
+
+        case 'Testimonials':
+          return (
+            <Testimonials
+              onReadMore={handleReadMore}
+            />
+          );
+
+        case 'BecomeVendor':
+          return (
+            <BecomeVendor
+              onRegister={handleRegister}
+            />
+          );
+
+        case 'machineries':
+          return (
+            <MachineryCard
+              onViewAll={handleMachineryViewAll}
+              onPressItem={handleMachineryPress}
+            />
+          );
+
         case 'materials':
           return (
             <MaterialCard
@@ -89,68 +184,50 @@ const HomeScreen = ({ navigation, route }) => {
               onPressItem={handleMaterialPress}
             />
           );
-        case 'machineries':
-          return (
-            <MachineryCard
-              onViewAll={() => {
-                navigation.navigate('Machineries');
-              }}
-              onPressItem={item => {
-                console.log('Selected machinery:', item);
-              }}
-            />
-          );
-        case 'piece-works':
-          return (
-            <PieceWorksCard
-              onViewAll={() => {
-                navigation.navigate('PieceWorks');
-              }}
-              onPressItem={item => {
-                console.log('Selected piece work:', item);
-              }}
-            />
-          );
-        case 'additional-services':
-          return (
-            <AdditionalServicesCard
-              onViewAll={() => {
-                navigation.navigate('AdditionalServices');
-              }}
-              onPressItem={item => {
-                console.log('Selected additional service:', item);
-              }}
-            />
-          );
-        case 'BecomeVendor':
-          return (
-            <BecomeVendor
-              onRegister={() => {
-                console.log('Register pressed');
-              }}
-            />
-          );
-        case 'Testimonials':
-          return (
-            <Testimonials
-              onReadMore={() => {
-                console.log('Read more pressed');
-              }}
-            />
-          );
+
         default:
           return null;
       }
     },
-    [handleMaterialPress, handleViewAllMaterials],
+    [
+      handleConstructionPress,
+      handleNriKnowMore,
+      handlePieceWorksViewAll,
+      handlePieceWorkPress,
+      handleAdditionalServicesViewAll,
+      handleAdditionalServicePress,
+      handleReadMore,
+      handleRegister,
+      handleMachineryViewAll,
+      handleMachineryPress,
+      handleViewAllMaterials,
+      handleMaterialPress,
+    ],
   );
 
-  const keyExtractor = useCallback(item => item.id, []);
+  // ==================================================
+  // UI
+  // ==================================================
 
   return (
-    <SafeAreaView style={styles.container}>
-      <HomeHeader location={location} />
+    <SafeAreaView
+      style={styles.container}
+      edges={['left', 'right', 'bottom']}>
 
+      {/* Status Bar */}
+      <StatusBar
+        translucent={false}
+        backgroundColor={headerGradient[0]}
+        barStyle="light-content"
+      />
+
+      {/* Header */}
+      <HomeHeader
+        location={location}
+        onBannerChange={handleBannerChange}
+      />
+
+      {/* Home Content */}
       <FlatList
         data={HOME_SECTIONS}
         keyExtractor={keyExtractor}
@@ -165,6 +242,7 @@ const HomeScreen = ({ navigation, route }) => {
         bounces={false}
       />
 
+      {/* Bottom Tab */}
       <BottomTab
         activeTab={route?.name || 'Home'}
         onTabPress={tab => navigation.navigate(tab)}
