@@ -1,6 +1,11 @@
 import React from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from 'react-native-responsive-dimensions';
 
 const TAB_ITEMS = [
   {
@@ -40,7 +45,11 @@ const BottomTab = ({activeTab = 'Home', onTabPress}) => {
             key={item.key}
             style={styles.tabItem}
             onPress={() => onTabPress?.(item.key)}>
-            <MaterialIcons name={item.icon} size={25} color={color} />
+            <MaterialIcons
+              name={item.icon}
+              size={responsiveWidth(6.5)}
+              color={color}
+            />
             <Text style={[styles.label, isActive && styles.activeLabel]}>
               {item.label}
             </Text>
@@ -58,18 +67,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     borderColor: '#E3E3E3',
-    borderWidth: 1,
+    borderWidth: responsiveWidth(0.25),
     elevation: 4,
     flexDirection: 'row',
-    height: 74,
+    height: responsiveHeight(9.2),
     justifyContent: 'space-around',
     shadowColor: '#000000',
     shadowOffset: {
       width: 0,
-      height: -1,
+      height: -responsiveHeight(0.12),
     },
     shadowOpacity: 0.08,
-    shadowRadius: 4,
+    shadowRadius: responsiveWidth(1),
   },
   tabItem: {
     alignItems: 'center',
@@ -79,9 +88,9 @@ const styles = StyleSheet.create({
   },
   label: {
     color: INACTIVE_COLOR,
-    fontSize: 12,
+    fontSize: responsiveFontSize(1.5),
     fontWeight: '500',
-    marginTop: 5,
+    marginTop: responsiveHeight(0.6),
   },
   activeLabel: {
     color: ACTIVE_COLOR,

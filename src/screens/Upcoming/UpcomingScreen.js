@@ -1,6 +1,11 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {
+  responsiveFontSize,
+  responsiveHeight,
+  responsiveWidth,
+} from 'react-native-responsive-dimensions';
 import BottomTab from '../../components/Home/BottomTab';
 
 const TAB_TITLES = {
@@ -37,16 +42,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 24,
+    paddingHorizontal: responsiveWidth(6.4),
   },
   title: {
     color: '#111827',
-    fontSize: 24,
+    fontSize: responsiveFontSize(3),
     fontWeight: '700',
   },
   message: {
     color: '#6B7280',
-    fontSize: 15,
-    marginTop: 8,
+    fontSize: responsiveFontSize(1.9),
+    marginTop: responsiveHeight(1),
   },
 });

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -22,35 +23,16 @@ const NriPropertyCare = memo(({onKnowMore}) => {
 
   return (
     <View style={styles.container}>
-      {/* ==========================================
-          SECTION TITLE
-      ========================================== */}
-
       <Text style={styles.sectionTitle}>
         Property Care for NRIs
       </Text>
 
-      {/* ==========================================
-          MAIN BANNER
-      ========================================== */}
-
       <View style={styles.card}>
-
-        {/* ========================================
-            IMAGE
-        ========================================= */}
-
         <Image
           source={require('../../../assets/nri/nri_new.png')}
           resizeMode="cover"
           style={styles.nriImage}
         />
-
-        {/* ========================================
-            WHITE / BLUE GRADIENT OVER IMAGE
-            This overlaps the image to create
-            the smooth fade seen in the design.
-        ========================================= */}
 
         <LinearGradient
           colors={[
@@ -81,10 +63,6 @@ const NriPropertyCare = memo(({onKnowMore}) => {
           pointerEvents="box-none"
         >
 
-          {/* ====================================
-              CONTENT
-          ==================================== */}
-
           <View style={styles.content}>
 
             <Text
@@ -100,10 +78,6 @@ const NriPropertyCare = memo(({onKnowMore}) => {
             >
               Property Care
             </Text>
-
-            {/* ==================================
-                SERVICES
-            ================================== */}
 
             <View style={styles.servicesRow}>
 
@@ -132,10 +106,6 @@ const NriPropertyCare = memo(({onKnowMore}) => {
             </View>
           </View>
 
-          {/* ====================================
-              KNOW MORE BUTTON
-          ==================================== */}
-
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={handleKnowMore}
@@ -146,9 +116,11 @@ const NriPropertyCare = memo(({onKnowMore}) => {
             </Text>
 
             <View style={styles.buttonArrowCircle}>
-              <Text style={styles.buttonArrow}>
-                →
-              </Text>
+              <MaterialIcons
+                name="arrow-forward"
+                size={responsiveWidth(2.8)}
+                color="#287FB5"
+              />
             </View>
           </TouchableOpacity>
 
@@ -163,10 +135,6 @@ export default NriPropertyCare;
 
 const styles = StyleSheet.create({
 
-  // ==========================================
-  // MAIN CONTAINER
-  // ==========================================
-
   container: {
     width: '100%',
 
@@ -174,10 +142,6 @@ const styles = StyleSheet.create({
 
     marginTop: responsiveHeight(2.5),
   },
-
-  // ==========================================
-  // SECTION TITLE
-  // ==========================================
 
   sectionTitle: {
     fontSize: responsiveFontSize(2.7),
@@ -190,10 +154,6 @@ const styles = StyleSheet.create({
 
     marginBottom: responsiveHeight(2),
   },
-
-  // ==========================================
-  // MAIN CARD
-  // ==========================================
 
   card: {
     width: '100%',
@@ -215,10 +175,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#EAF7FF',
   },
 
-  // ==========================================
-  // NRI IMAGE
-  // ==========================================
-
   nriImage: {
     position: 'absolute',
 
@@ -236,10 +192,6 @@ const styles = StyleSheet.create({
 
     borderBottomRightRadius: responsiveWidth(3.5),
   },
-
-  // ==========================================
-  // CONTENT GRADIENT
-  // ==========================================
 
   contentGradient: {
     position: 'absolute',
@@ -263,19 +215,11 @@ const styles = StyleSheet.create({
     paddingBottom: responsiveHeight(1.7),
   },
 
-  // ==========================================
-  // CONTENT
-  // ==========================================
-
   content: {
     width: responsiveWidth(58),
 
     zIndex: 5,
   },
-
-  // ==========================================
-  // TITLE
-  // ==========================================
 
   contentTitle: {
     fontSize: responsiveFontSize(2),
@@ -289,10 +233,6 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
   },
 
-  // ==========================================
-  // SERVICES ROW
-  // ==========================================
-
   servicesRow: {
     flexDirection: 'row',
 
@@ -301,10 +241,6 @@ const styles = StyleSheet.create({
     marginTop: responsiveHeight(1),
   },
 
-  // ==========================================
-  // SERVICE ITEM
-  // ==========================================
-
   serviceItem: {
     flexDirection: 'row',
 
@@ -312,10 +248,6 @@ const styles = StyleSheet.create({
 
     marginRight: responsiveWidth(4.5),
   },
-
-  // ==========================================
-  // BULLET
-  // ==========================================
 
   bullet: {
     fontSize: responsiveFontSize(1.8),
@@ -329,10 +261,6 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
   },
 
-  // ==========================================
-  // SERVICE TEXT
-  // ==========================================
-
   serviceText: {
     fontSize: responsiveFontSize(1.35),
 
@@ -344,10 +272,6 @@ const styles = StyleSheet.create({
 
     includeFontPadding: false,
   },
-
-  // ==========================================
-  // KNOW MORE BUTTON
-  // ==========================================
 
   knowMoreButton: {
     alignSelf: 'flex-end',
@@ -375,10 +299,6 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
 
-  // ==========================================
-  // BUTTON TEXT
-  // ==========================================
-
   knowMoreText: {
     color: '#FFFFFF',
 
@@ -390,10 +310,6 @@ const styles = StyleSheet.create({
 
     includeFontPadding: false,
   },
-
-  // ==========================================
-  // BUTTON ARROW CIRCLE
-  // ==========================================
 
   buttonArrowCircle: {
     width: responsiveWidth(4.2),
@@ -411,19 +327,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  // ==========================================
-  // ARROW
-  // ==========================================
-
-  buttonArrow: {
-    color: '#287FB5',
-
-    fontSize: responsiveFontSize(1.6),
-
-    fontWeight: '700',
-
-    lineHeight: responsiveFontSize(2),
-
-    includeFontPadding: false,
-  },
 });

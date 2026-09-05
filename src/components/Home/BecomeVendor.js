@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -81,9 +82,11 @@ const BecomeVendor = memo(({onRegister}) => {
             </Text>
 
             <View style={styles.arrowCircle}>
-              <Text style={styles.arrow}>
-                →
-              </Text>
+              <MaterialIcons
+                name="arrow-forward"
+                size={responsiveWidth(2.8)}
+                color="#287FB5"
+              />
             </View>
 
           </TouchableOpacity>
@@ -109,7 +112,6 @@ const styles = StyleSheet.create({
 
   sectionTitle: {
     fontSize: responsiveFontSize(2.8),
-    fontWeight: '500',
     lineHeight: responsiveFontSize(3),
     fontWeight: '400',
     color: '#111111',
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
   vendorImage: {
     position: 'absolute',
 
-    right: -30,
+    right: responsiveWidth(-8),
 
     top: 0,
 
@@ -249,15 +251,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  arrow: {
-    color: '#287FB5',
-
-    fontSize: responsiveFontSize(1.6),
-
-    // lineHeight: responsiveFontSize(2),
-
-    fontWeight: '700',
-
-    includeFontPadding: false,
-  },
 });

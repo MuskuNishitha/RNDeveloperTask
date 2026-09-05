@@ -56,19 +56,11 @@ const Testimonials = memo(({onPressItem}) => {
         onPress={() => handlePress(item)}
         style={styles.card}>
         
-        {/* =====================================
-            TESTIMONIAL IMAGE
-        ====================================== */}
-
         <Image
           source={item.image}
           resizeMode="cover"
           style={styles.image}
         />
-
-        {/* =====================================
-            BOTTOM BLACK GRADIENT
-        ====================================== */}
 
         <LinearGradient
           colors={[
@@ -82,10 +74,6 @@ const Testimonials = memo(({onPressItem}) => {
           style={styles.bottomGradient}
         />
 
-        {/* =====================================
-            PLAY BUTTON
-        ====================================== */}
-
         <View style={styles.playButton}>
           <Ionicons
             name="play"
@@ -94,10 +82,6 @@ const Testimonials = memo(({onPressItem}) => {
             style={styles.playIcon}
           />
         </View>
-
-        {/* =====================================
-            BOTTOM CONTENT
-        ====================================== */}
 
         <View style={styles.bottomContent}>
 
@@ -124,17 +108,9 @@ const Testimonials = memo(({onPressItem}) => {
   return (
     <View style={styles.container}>
 
-      {/* =====================================
-          SECTION HEADER
-      ====================================== */}
-
       <Text style={styles.sectionTitle}>
         Testimonials
       </Text>
-
-      {/* =====================================
-          HORIZONTAL LIST
-      ====================================== */}
 
       <FlatList
         data={TESTIMONIALS}
@@ -157,18 +133,10 @@ const Testimonials = memo(({onPressItem}) => {
 export default Testimonials;
 
 const styles = StyleSheet.create({
-  // ==========================================
-  // MAIN CONTAINER
-  // ==========================================
-
   container: {
     width: '100%',
     marginTop: responsiveHeight(2.5),
   },
-
-  // ==========================================
-  // SECTION TITLE
-  // ==========================================
 
   sectionTitle: {
     marginLeft: responsiveWidth(4),
@@ -183,10 +151,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
 
-  // ==========================================
-  // FLATLIST
-  // ==========================================
-
   listContent: {
     paddingLeft: responsiveWidth(4),
     paddingRight: responsiveWidth(4),
@@ -195,10 +159,6 @@ const styles = StyleSheet.create({
   separator: {
     width: responsiveWidth(2.5),
   },
-
-  // ==========================================
-  // CARD
-  // ==========================================
 
   card: {
     width: responsiveWidth(43),
@@ -218,10 +178,6 @@ const styles = StyleSheet.create({
     borderColor: '#D9D9D9',
   },
 
-  // ==========================================
-  // IMAGE
-  // ==========================================
-
   image: {
     position: 'absolute',
 
@@ -234,10 +190,6 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 
-  // ==========================================
-  // BOTTOM GRADIENT
-  // ==========================================
-
   bottomGradient: {
     position: 'absolute',
 
@@ -249,10 +201,6 @@ const styles = StyleSheet.create({
 
     zIndex: 2,
   },
-
-  // ==========================================
-  // PLAY BUTTON OUTER CIRCLE
-  // ==========================================
 
   playButton: {
     position: 'absolute',
@@ -280,17 +228,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.08)',
   },
 
-  // ==========================================
-  // PLAY ICON
-  // ==========================================
-
   playIcon: {
     marginLeft: responsiveWidth(0.8),
   },
-
-  // ==========================================
-  // BOTTOM CONTENT
-  // ==========================================
 
   bottomContent: {
     position: 'absolute',
@@ -309,10 +249,6 @@ const styles = StyleSheet.create({
 
     zIndex: 5,
   },
-
-  // ==========================================
-  // NAME + ROLE
-  // ==========================================
 
   nameContainer: {
     flex: 1,
@@ -340,10 +276,6 @@ const styles = StyleSheet.create({
 
     fontWeight: '400',
   },
-
-  // ==========================================
-  // VIDEO DURATION
-  // ==========================================
 
   duration: {
     color: '#BDBDBD',

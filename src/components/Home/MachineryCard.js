@@ -43,9 +43,9 @@ const MACHINERY_DATA = [
   },
 ];
 
-const CARD_WIDTH = 97;
-const CARD_HEIGHT = 82;
-const CARD_GAP = 14;
+const CARD_WIDTH = responsiveWidth(25.9);
+const CARD_HEIGHT = responsiveHeight(10.1);
+const CARD_GAP = responsiveWidth(3.7);
 
 const MachineryCard = memo(({onViewAll, onPressItem}) => {
   const renderItem = useCallback(
@@ -140,7 +140,7 @@ export default MachineryCard;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    marginTop: 18,
+    marginTop: responsiveHeight(2.2),
   },
 
   header: {
@@ -148,9 +148,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
 
-    paddingHorizontal: 28,
+    paddingHorizontal: responsiveWidth(7.5),
 
-    marginBottom: 12,
+    marginBottom: responsiveHeight(1.5),
   },
 
   title: {
@@ -166,8 +166,8 @@ const styles = StyleSheet.create({
   },
 
   listContent: {
-    paddingLeft: 28,
-    paddingRight: 28,
+    paddingLeft: responsiveWidth(7.5),
+    paddingRight: responsiveWidth(7.5),
   },
 
   separator: {
@@ -184,9 +184,9 @@ const styles = StyleSheet.create({
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
 
-    borderWidth: 1,
+    borderWidth: responsiveWidth(0.25),
     borderColor: '#E5E5E5',
-    borderRadius: 10,
+    borderRadius: responsiveWidth(2.7),
     backgroundColor: '#FAFAFA',
 
     alignItems: 'center',

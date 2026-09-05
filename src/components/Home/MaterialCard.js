@@ -42,8 +42,8 @@ const MATERIAL_DATA = [
   },
 ];
 
-const CARD_WIDTH = 132;
-const CARD_GAP = 20;
+const CARD_WIDTH = responsiveWidth(35.2);
+const CARD_GAP = responsiveWidth(5.3);
 
 const MaterialCard = memo(({ onViewAll, onPressItem }) => {
   const renderMaterial = useCallback(
@@ -115,15 +115,15 @@ export default MaterialCard;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 18,
+    marginTop: responsiveHeight(2.2),
   },
 
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 18,
-    marginBottom: 16,
+    paddingHorizontal: responsiveWidth(4.8),
+    marginBottom: responsiveHeight(2),
   },
 
   title: {
@@ -139,8 +139,8 @@ const styles = StyleSheet.create({
   },
 
   listContent: {
-    paddingLeft: 18,
-    paddingRight: 18,
+    paddingLeft: responsiveWidth(4.8),
+    paddingRight: responsiveWidth(4.8),
   },
 
   separator: {
@@ -149,19 +149,19 @@ const styles = StyleSheet.create({
 
   card: {
     width: CARD_WIDTH,
-    height: 168,
-    borderWidth: 1,
+    height: responsiveHeight(20.7),
+    borderWidth: responsiveWidth(0.25),
     borderColor: '#E7E7E7',
-    borderRadius: 13,
+    borderRadius: responsiveWidth(3.5),
     backgroundColor: '#FAFAFA',
-    padding: 8,
+    padding: responsiveWidth(2.1),
     alignItems: 'center',
   },
 
   imageContainer: {
     width: '100%',
-    height: 88,
-    borderRadius: 11,
+    height: responsiveHeight(10.8),
+    borderRadius: responsiveWidth(2.9),
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',

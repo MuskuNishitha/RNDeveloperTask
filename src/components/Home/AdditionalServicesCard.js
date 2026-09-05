@@ -38,7 +38,7 @@ const ADDITIONAL_SERVICES_DATA = [
 
 const CARD_WIDTH = responsiveWidth(41);
 const CARD_HEIGHT = responsiveHeight(17);
-const CARD_GAP = 10;
+const CARD_GAP = responsiveWidth(2.7);
 
 const AdditionalServicesCard = memo(
   ({onViewAll, onPressItem}) => {
@@ -127,15 +127,15 @@ export default AdditionalServicesCard;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 22,
+    marginTop: responsiveHeight(2.7),
   },
 
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    marginBottom: 12,
+    paddingHorizontal: responsiveWidth(4.3),
+    marginBottom: responsiveHeight(1.5),
   },
 
   title: {
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
 
   listContent: {
-    paddingHorizontal: 16,
+    paddingHorizontal: responsiveWidth(4.3),
   },
 
   separator: {
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
-    borderRadius: 12,
+    borderRadius: responsiveWidth(3.2),
     overflow: 'hidden',
     backgroundColor: '#EEEEEE',
   },
@@ -173,23 +173,23 @@ const styles = StyleSheet.create({
 
   overlayContainer: {
     position: 'absolute',
-    left: 12,
-    right: 12,
-    bottom: 10,
+    left: responsiveWidth(3.2),
+    right: responsiveWidth(3.2),
+    bottom: responsiveHeight(1.2),
     height: responsiveHeight(3),
 
-    borderRadius: 20,
+    borderRadius: responsiveWidth(5.3),
 
     backgroundColor: 'rgba(255,255,255,0.88)',
 
     alignItems: 'center',
     justifyContent: 'center',
 
-    paddingHorizontal: 10,
+    paddingHorizontal: responsiveWidth(2.7),
   },
 
   serviceName: {
-    fontSize: 14,
+    fontSize: responsiveFontSize(1.8),
     fontWeight: '400',
     color: '#111111',
     textAlign: 'center',

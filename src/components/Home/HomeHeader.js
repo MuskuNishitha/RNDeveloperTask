@@ -69,7 +69,6 @@ const HomeHeader = ({location = DEFAULT_LOCATION, onBannerChange}) => {
     ) {
       setActiveIndex(index);
 
-      // Send active gradient to HomeScreen
       onBannerChange?.(banners[index].background);
     }
   };
@@ -96,7 +95,6 @@ const HomeHeader = ({location = DEFAULT_LOCATION, onBannerChange}) => {
 
   return (
     <>
-      {/* Android Status Bar */}
       <StatusBar
         translucent={false}
         backgroundColor={activeBanner.background[0]}
@@ -114,7 +112,6 @@ const HomeHeader = ({location = DEFAULT_LOCATION, onBannerChange}) => {
           },
         ]}>
         
-        {/* Location */}
         <View style={styles.locationRow}>
           <TouchableOpacity
             activeOpacity={0.7}
@@ -154,7 +151,6 @@ const HomeHeader = ({location = DEFAULT_LOCATION, onBannerChange}) => {
           </TouchableOpacity>
         </View>
 
-        {/* Search */}
         <View style={styles.searchContainer}>
           <Ionicons
             name="search-outline"
@@ -169,7 +165,6 @@ const HomeHeader = ({location = DEFAULT_LOCATION, onBannerChange}) => {
           </Text>
         </View>
 
-        {/* Slider */}
         <FlatList
           ref={flatListRef}
           data={banners}
@@ -189,7 +184,6 @@ const HomeHeader = ({location = DEFAULT_LOCATION, onBannerChange}) => {
           })}
         />
 
-        {/* Dots */}
         <View style={styles.dotsContainer}>
           {banners.map((_, index) => (
             <View
@@ -262,7 +256,7 @@ const styles = StyleSheet.create({
     height: responsiveWidth(1.8),
     borderRadius: responsiveWidth(1),
     backgroundColor: '#FF9D3D',
-    borderWidth: 1,
+    borderWidth: responsiveWidth(0.25),
     borderColor: '#FFFFFF',
   },
 
@@ -278,10 +272,10 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: responsiveHeight(0.25),
     },
     shadowOpacity: 0.08,
-    shadowRadius: 4,
+    shadowRadius: responsiveWidth(1),
     elevation: 3,
   },
 
@@ -344,7 +338,7 @@ const styles = StyleSheet.create({
     width: responsiveWidth(4),
     height: responsiveHeight(0.45),
     marginRight: responsiveWidth(1.8),
-    borderRadius: 20,
+    borderRadius: responsiveWidth(2),
     backgroundColor: 'rgba(255,255,255,0.45)',
   },
 

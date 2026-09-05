@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {responsiveHeight} from 'react-native-responsive-dimensions';
 
 import BottomTab from '../../components/Home/BottomTab';
 import HomeHeader from '../../components/Home/HomeHeader';
@@ -56,10 +57,6 @@ const HOME_SECTIONS = [
 ];
 
 const HomeScreen = ({navigation, route}) => {
-  // ==================================================
-  // ALL HOOKS MUST BE AT THE TOP
-  // ==================================================
-
   const [headerGradient, setHeaderGradient] = useState([
     '#1B9CD9',
     '#7FCBEA',
@@ -205,29 +202,22 @@ const HomeScreen = ({navigation, route}) => {
     ],
   );
 
-  // ==================================================
-  // UI
-  // ==================================================
-
   return (
     <SafeAreaView
       style={styles.container}
       edges={['left', 'right', 'bottom']}>
 
-      {/* Status Bar */}
       <StatusBar
         translucent={false}
         backgroundColor={headerGradient[0]}
         barStyle="light-content"
       />
 
-      {/* Header */}
       <HomeHeader
         location={location}
         onBannerChange={handleBannerChange}
       />
 
-      {/* Home Content */}
       <FlatList
         data={HOME_SECTIONS}
         keyExtractor={keyExtractor}
@@ -242,7 +232,6 @@ const HomeScreen = ({navigation, route}) => {
         bounces={false}
       />
 
-      {/* Bottom Tab */}
       <BottomTab
         activeTab={route?.name || 'Home'}
         onTabPress={tab => navigation.navigate(tab)}
@@ -260,6 +249,6 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    paddingBottom: 20,
+    paddingBottom: responsiveHeight(2.5),
   },
 });

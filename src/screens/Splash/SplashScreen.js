@@ -10,6 +10,7 @@ import {
 import Geolocation from '@react-native-community/geolocation';
 import {GOOGLE_MAP_KEY} from '../../config/BaseUrl';
 import {DEFAULT_LOCATION} from '../../config/DefaultLocation';
+import {responsiveHeight} from 'react-native-responsive-dimensions';
 
 Geolocation.setRNConfiguration({
   authorizationLevel: 'whenInUse',
@@ -304,7 +305,7 @@ const styles = StyleSheet.create({
 
   loadingContainer: {
     position: 'absolute',
-    bottom: 70,
+    bottom: responsiveHeight(8.6),
     alignItems: 'center',
     justifyContent: 'center',
   },

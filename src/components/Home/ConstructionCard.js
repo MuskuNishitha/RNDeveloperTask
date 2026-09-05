@@ -1,5 +1,6 @@
 import React, { memo, useCallback } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {
   responsiveFontSize,
@@ -95,7 +96,11 @@ const ConstructionCard = memo(({ onPressItem }) => {
                       },
                     ]}
                   >
-                    <Text style={styles.arrow}>→</Text>
+                    <MaterialIcons
+                      name="arrow-forward"
+                      size={responsiveWidth(3.2)}
+                      color="#FFFFFF"
+                    />
                   </View>
                 </View>
               </View>
@@ -220,18 +225,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
     justifyContent: 'center',
-  },
-
-  arrow: {
-    color: '#FFFFFF',
-
-    fontSize: responsiveFontSize(1.7),
-
-    lineHeight: responsiveFontSize(2),
-
-    fontWeight: '700',
-
-    includeFontPadding: false,
   },
 
   imageBackground: {

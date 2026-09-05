@@ -40,8 +40,8 @@ const PIECE_WORKS_DATA = [
   },
 ];
 
-const ITEM_WIDTH = 89;
-const ITEM_GAP = 13;
+const ITEM_WIDTH = responsiveWidth(23.7);
+const ITEM_GAP = responsiveWidth(3.5);
 
 const PieceWorksCard = memo(({ onViewAll, onPressItem }) => {
   const renderItem = useCallback(
@@ -110,15 +110,15 @@ export default PieceWorksCard;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: responsiveHeight(2.5),
   },
 
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    marginBottom: 12,
+    paddingHorizontal: responsiveWidth(4.3),
+    marginBottom: responsiveHeight(1.5),
   },
 
   title: {
@@ -135,20 +135,19 @@ const styles = StyleSheet.create({
   },
 
   listContent: {
-    paddingHorizontal: 16,
+    paddingHorizontal: responsiveWidth(4.3),
   },
 
   item: {
     width: ITEM_WIDTH,
     alignItems: 'center',
-    // backgroundColor: '#FFFFFF',
   },
 
   iconContainer: {
     width: responsiveHeight(9),
     height: responsiveHeight(9),
     borderRadius: responsiveHeight(4.5),
-    borderWidth: 0.5,
+    borderWidth: responsiveWidth(0.13),
     borderColor: '#A3A3A3',
     backgroundColor: '#f2f2f2',
     alignItems: 'center',
@@ -162,7 +161,7 @@ const styles = StyleSheet.create({
 
   itemName: {
     width: ITEM_WIDTH,
-    marginTop: 7,
+    marginTop: responsiveHeight(0.9),
     textAlign: 'center',
     fontSize: responsiveFontSize(1.6),
     fontWeight: '400',
